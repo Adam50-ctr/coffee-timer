@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Page title-->
+    <title>CoffeeTime: Visual Countdown for Effective Time Management</title>
+    <!--description-->
+    <meta
+      name="description"
+      content="Experience a unique coffee-themed countdown timer that helps you track time visually and boost your productivity."
+    />
+    <!--keywords-->
+    <meta
+      name="keywords"
+      content="Coffee Timer, Countdown Timer, Productivity Timer, Visual Timer, Time Management Tool"
+    />
+    <meta name="author" content="CoffeeTime" />
+
+    <!--Social Media-->
+    <meta
+      property="og:title"
+      content="CoffeeTime: The Visual Countdown for Time Management Pros"
+    />
+    <meta
+      property="og:description"
+      content="Discover the coffee-inspired countdown timer that helps you visually track time and boost your productivity."
+    />
+    <meta property="og:image" content="#" />
+    <meta property="og:url" content="#" />
+    <!--Icon-->
+    <link rel="icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <!--Cdnjs and google font links-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--For CountDown Timer text-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--For numbers on the clock-->
+    <!-- Google Fonts link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!--For Navbar and lil text-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main__container">
+      <div class="main__content countdown">
+        <!--Navbar-->
+        <div class="hamburger-menu" id="hamburger-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+        <nav class="nav dis">
+          <ul class="navbar__container">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Timer</a></li>
+            <li><h3 class="open" id="CountdownText">Countdown Timer</h3></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </nav>
+
+        <header>
+            <h1 class="home__title">Welcome to Your Productivity Hub</h1>
+        </header>
+
+        <section class="about-section">
+            <h2 class="about__title">Why Focus Matters</h2>
+            <p class="about__text">
+              In a world full of distractions, staying focused can feel impossible. 
+              Our tools and techniques help you reclaim your time and get more done 
+              with less stress. Learn how to break through procrastination and build lasting habits.
+            </p>
+        </section>
+    
+        <section class="features">
+            <div class="feature-item">
+                <h2 class="feature-item__title">Blog</h2>
+                <p>Get actionable tips on productivity and focus, from the Pomodoro Technique to powerful time-management hacks. Build better habits and boost your efficiency with insights that help you achieve your goals faster.</p>
+            </div>
+            <div class="feature-item">
+                <h2 class="feature-item__title">Focus Timer</h2>
+                <p>Break free from distractions with our customizable Focus Timer. Stay on task, beat procrastination, and watch your productivity skyrocket as you master your time effectively.</p>
+            </div>
+        </section>
+    
+        <section class="support-info">
+            <p>Over 100 supporters have already contributed!</p>
+        </section>
+    
+        <div class="cta-buttons">
+            <button onclick="window.location.href='index.html'">Try the Timer</button>
+            <button onclick="window.location.href='donate.html';">Donate Now</button>
+        </div>
+    
+        <section class="footer">
+            <div class="links__container">
+              <ul class="footer__links">
+                <li><a class="footerLink" href="home.html">Home</a></li>
+                <li><a class="footerLink" href="index.html">Timer</a></li>
+                <li><a class="footerLink" href="blog.html">Blog</a></li>
+                <li><a class="footerLink" href="donate.html">Donate</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-copyright">
+              <p>Version 1.0.0</p>
+            </div>
+
+            <div class="social-media__container">
+              <ul class="social-media">
+                <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
+              </ul>
+            </div>
+          </section>
+    <script src="script.js"></script>
+  </body>
+</html>

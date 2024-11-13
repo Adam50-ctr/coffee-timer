@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Page title-->
+    <title>CoffeeTime: Visual Countdown for Effective Time Management</title>
+    <!--description-->
+    <meta
+      name="description"
+      content="Experience a unique coffee-themed countdown timer that helps you track time visually and boost your productivity."
+    />
+    <!--keywords-->
+    <meta
+      name="keywords"
+      content="Coffee Timer, Countdown Timer, Productivity Timer, Visual Timer, Time Management Tool"
+    />
+    <meta name="author" content="CoffeeTime" />
+
+    <!--Social Media-->
+    <meta
+      property="og:title"
+      content="CoffeeTime: The Visual Countdown for Time Management Pros"
+    />
+    <meta
+      property="og:description"
+      content="Discover the coffee-inspired countdown timer that helps you visually track time and boost your productivity."
+    />
+    <meta property="og:image" content="#" />
+    <meta property="og:url" content="#" />
+    <!--Icon-->
+    <link rel="icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <!--Cdnjs and google font links-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!--For CountDown Timer text-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--For numbers on the clock-->
+    <!-- Google Fonts link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!--For Navbar and lil text-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main__container">
+      <div class="main__content countdown">
+        <!--Navbar-->
+        <div class="hamburger-menu" id="hamburger-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+        <nav class="nav dis">
+          <ul class="navbar__container">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Timer</a></li>
+            <li><h3 class="open" id="CountdownText">Countdown Timer</h3></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </nav>
+
+        <!--Timer settings-->
+        <section class="timer">
+          <div class="popup" id="popup">
+            <div class="popup__content">
+              <h2 class="popUp__title">Customize Your Countdown ⏳</h2>
+              <div class="input__container">
+                <label for="minutes">Minutes:</label>
+                <input type="number" id="minutes" min="0" placeholder="0" />
+                <label for="seconds">Seconds:</label>
+                <input
+                  type="number"
+                  id="seconds"
+                  min="0"
+                  max="59"
+                  placeholder="0"
+                />
+              </div>
+              <button id="set-timer">Let's Start</button>
+              <button id="close-popup"><i class="fa fa-times"></i></button>
+            </div>
+          </div>
+
+          <!--timer & coffe image & buttons-->
+          <div class="coffe__contaienr">
+            <div class="timer__numbers">
+              <h2 id="timer-display" class="open">00:00</h2>
+            </div>
+            <!--Image-->
+            <div class="coffee__img">
+              <img src="img/coffeeImg.png" alt="coffee" class="coffee_cup" />
+            </div>
+          </div>
+          <!--Start Stop Button-->
+          <div class="btn-container">
+            <button id="start-timer">Start</button>
+            <button id="stop-timer">Stop</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

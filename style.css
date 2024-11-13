@@ -1,0 +1,912 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* basic colors */
+:root {
+  --primary-color: #3e2723;
+  --secondary-color: #ffc107;
+  --background-color: rgba(217, 182, 154, 1);
+  --text-color: rgba(252, 245, 232, 255);
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 3rem;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  height: auto;
+}
+
+/*Here we create that surface where we work*/
+.main__container {
+  zoom: 125%;
+  background: linear-gradient(135deg, #f5e6d0, #e4ccad);
+  border-radius: 25px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  max-width: 800px;
+  width: 100%;
+  min-height: 40vh;
+}
+
+/*Navbar*/
+.nav {
+  position: sticky;
+  top: 0rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 60px;
+  font-size: 0;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  z-index: 200;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger menu bar hide*/
+.hamburger-menu i {
+  display: none;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: white;
+  z-index: 500;
+}
+
+/* Add sticky class to navbar */
+.sticky {
+  width: calc(100% + 4rem);
+  max-width: calc(800px + 4rem);
+  padding: 0 2rem;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  border-radius: 0px;
+  background-color: #704e3a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/*Form the links in the navbar*/
+.nav a {
+  font-weight: 500;
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+  line-height: 50px;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  text-align: center;
+  display: block;
+  padding: 5px 22px;
+  border-radius: 20px;
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/*Animations*/
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background-color: var(--secondary-color);
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.45s ease;
+}
+
+.nav a:hover::after {
+  width: 80%;
+}
+
+/*This is the CountDown Timer text at the middle of the navbar*/
+h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+i {
+  color: white;
+}
+
+/* Timer text Numbers */
+.timer {
+  display: flex;
+  flex-direction: column;
+}
+
+.timer__numbers {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 4rem;
+  font-family: "Playfair Display", serif;
+  color: black;
+}
+
+/* Coffee cup img */
+.coffee_cup {
+  width: 400px;
+  height: auto;
+  display: block;
+  margin: 2rem auto 10px auto;
+}
+
+/* Start Stop buttons */
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
+#start-timer,
+#stop-timer {
+  margin: 2.5rem 1.8rem 4rem;
+  padding: 1rem 3rem;
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 17px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3 ease;
+}
+
+#start-timer:hover,
+#stop-timer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Popup windows */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+.popup__content {
+  position: relative;
+  max-height: 580px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 5rem;
+  border-radius: 15px;
+  text-align: center;
+  width: 500px;
+  .popUp__title {
+    padding-bottom: 5rem;
+    font-size: 2rem;
+  }
+}
+
+/* Labels and inouts are here */
+.input__container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-weight: 600;
+}
+
+input {
+  width: 70px;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-radius: 20px;
+  border: none;
+}
+
+/* This is the button in the popup window */
+#set-timer {
+  padding: 0.8rem 2rem;
+  margin-top: 7rem;
+  border: none;
+  border-radius: 15px;
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#set-timer:hover {
+  background: #e6a700;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Close Popup window icon */
+#close-popup {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: rgb(26, 26, 26);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#close-popup:hover {
+  color: black;
+  transform: scale(1.15);
+}
+
+/* add show class to popup */
+.popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*Blog*/
+.blog__container {
+  color: black;
+}
+.blog__subtitle {
+  color: black;
+}
+
+/* title of blog */
+.blog__head {
+  margin: 5rem 2rem 4rem 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+/* subtitles of blog */
+.blog__subtitle {
+  text-align: left;
+  margin-bottom: 1.6rem;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* texts of blog */
+.blog__text {
+  text-align: left;
+  margin-left: 2rem;
+  font-family: "Merriweather", serif;
+  font-size: 1.1rem;
+  color: #242424;
+}
+
+/* lists */
+.blog__unorderedList {
+  margin: 3rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.blog__listItem {
+  color: #333333;
+  transition: color 0.2s ease-in, font-weight 0.2s ease-in, transform 0.2s ease;
+}
+
+.blog__listItem:hover {
+  font-weight: 600;
+  color: #8b5e3c;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+/* First Paragraph */
+.introduction {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* Image about success and coffee */
+.coffePerson {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.coffePerson img {
+  max-width: 60%;
+  height: auto;
+}
+/* This is the Promodoro example timer */
+.timer-container {
+  display: flex;
+  justify-content: center;
+}
+
+#pomodoro-timer {
+  align-items: center;
+}
+
+/* draw progress bar */
+#progress {
+  transition: stroke-dashoffset 0.5s linear;
+}
+
+/* Time management table*/
+.TimeMangement {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #242424;
+  margin: 4rem auto 8rem auto;
+}
+
+.TimeMangement th,
+.TimeMangement td {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Draw checkmark */
+#checkmark-path {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  stroke: #4caf50;
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease-in-out; /* slower, smoother animation */
+}
+
+.checkIcon {
+  display: flex;
+  justify-content: center;
+  margin: 10rem auto 7rem auto;
+}
+
+.show-checkmark {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.animate-checkmark #checkmark-path {
+  stroke-dashoffset: 0; /*draw out animation*/
+}
+
+/* Donate page */
+.donation-page {
+  color: black;
+}
+
+.donation__title {
+  font-size: 2.4rem;
+  margin: 3rem auto 0.7rem auto;
+  color: black;
+}
+.donation__quote {
+  color: #242424;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.donation__subtitle {
+  font-size: 1.8rem;
+  margin-top: 20px;
+  margin-bottom: 0.6rem;
+  color: black;
+}
+
+.donation__text {
+  margin: 2rem auto auto 1rem;
+  font-size: 15px;
+  color: #242424;
+}
+
+/* Bitcoin part style */
+.bitcoin-section {
+  margin-top: 1.7rem;
+}
+.donation__info {
+  color: #242424;
+  font-size: 1rem;
+  margin: 1.9rem auto auto 1rem;
+  font-weight: 600;
+}
+
+.btc-address {
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 2rem 8rem auto auto;
+  word-break: break-all;
+  font-size: 1.3rem;
+}
+
+.qr-code {
+  width: 180px;
+  height: auto;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Thank message */
+.thank-you {
+  margin-top: 20px;
+  font-style: italic;
+  color: #555;
+}
+
+/* Home */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 3rem auto 3rem auto;
+  color: black;
+  font-size: 3rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #242424;
+  margin-bottom: 2rem;
+}
+
+.about__title {
+  font-size: 1.9rem;
+  margin-top: 20px;
+  margin-bottom: 0.6rem;
+  color: black;
+  font-style: italic;
+}
+
+.about__text {
+  margin: 2rem auto auto 1.5rem;
+  font-size: 15px;
+  color: #242424;
+  font-style: italic;
+}
+
+/* Features section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  margin-bottom: 20px;
+  min-height: 15rem;
+}
+/* features cards */
+.feature-item {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+  color: var(--text-color);
+  flex: 1;
+  text-align: center;
+  margin-top: 3rem;
+}
+.feature-item__title {
+  margin-bottom: 1.4rem;
+  color: white;
+  font-size: 1.8;
+}
+
+/* Support info */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2.9rem;
+  margin-top: 9rem;
+  margin-bottom: -5rem;
+}
+
+/* smoother yellow section and the shadow function */
+.support-info {
+  background-color: #eeaf046b;
+  color: var(--dark-color);
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 5rem;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.support-info p {
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.cta-buttons button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* hover the home buttons */
+.cta-buttons button:hover {
+  scale: 1.1;
+}
+
+/* Timer Button */
+.cta-buttons button:first-of-type {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+/* Donation Button */
+.cta-buttons button:last-of-type {
+  background-color: var(--secondary-color);
+  color: var(--dark-color);
+}
+/* footer */
+.footer {
+  background-color: #242424;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  width: calc(100% + 4rem);
+  max-width: calc(800px + 4rem);
+  padding: 0 4rem;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-top: 10rem;
+  height: calc(500vh -3rem);
+}
+
+/* contents of footer */
+.social-media,
+.footer__links {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footerLink {
+  color: white;
+  padding-left: 2rem;
+}
+.footerLink:hover {
+  color: #007bff;
+}
+
+.social-media {
+  font-size: 2.3rem;
+  padding-right: 3rem;
+}
+
+/* Blue color for the highlight */
+.social-media a:hover i {
+  color: #1e90ff;
+}
+
+.footer-copyright {
+  font-style: italic;
+  letter-spacing: 0.2rem;
+}
+/* Under 450 optimased the content*/
+@media (max-width: 450px) {
+  /* Nav disappear */
+  .navbar__container {
+    display: flex;
+    right: -100%;
+    position: fixed;
+    z-index: 600;
+    transition: right 0.3s ease-in-out;
+  }
+
+  /* Text appearing*/
+  body {
+    margin: 0rem;
+    line-height: 1.6;
+  }
+
+  /*Here we create that surface where we work*/
+  .main__container {
+    zoom: 100%;
+    border-radius: 0px;
+    padding: 1.3rem;
+  }
+
+  .blog__head {
+    margin: auto;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  /* subtitles of blog */
+  .blog__subtitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  /* texts of blog */
+  .blog__text {
+    margin-left: 1rem;
+    font-size: 1rem;
+  }
+
+  /* Numbers optimased */
+  .timer__numbers {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -1.5rem;
+  }
+
+  /* Coffecup */
+  .coffee_cup {
+    width: 280px;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+  }
+
+  /* start buttons and stop buttons */
+  #start-timer,
+  #stop-timer {
+    padding: 1rem 2rem !important;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 0.8rem;
+    margin-top: 1rem;
+  }
+}
+
+/* 375px under */
+@media (max-width: 375px) {
+  .media-message {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  .timer__numbers {
+    top: -2.5rem;
+    font-size: 3rem;
+  }
+
+  .coffee_cup {
+    width: 250px;
+  }
+
+  #start-timer,
+  #stop-timer {
+    padding: 0.6rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* text reduction */
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  body {
+    margin: 0rem;
+    line-height: 1.6;
+  }
+
+  /*Here we create that surface where we work*/
+  .main__container {
+    zoom: 100%;
+    border-radius: 0px;
+    padding: 1.3rem;
+  }
+
+  .blog__head {
+    margin: auto;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  /* subtitles of blog */
+  .blog__subtitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  /* texts of blog */
+  .blog__text {
+    margin-left: 1rem;
+    font-size: 1rem;
+  }
+
+  /* Hamburger icon appearing */
+  .nav.sticky .hamburger-menu {
+    display: block;
+    cursor: pointer;
+    position: fixed;
+    top: 1.4rem;
+    right: 0.8rem;
+    z-index: 300;
+  }
+
+  .hamburger-menu i {
+    display: block;
+    color: black;
+    font-size: 2.2rem;
+    pointer-events: auto;
+  }
+
+  .nav {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .timer__numbers {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -6.5rem;
+  }
+
+  .coffee_cup {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -3.5rem;
+  }
+
+  /* Navigation menu appear */
+  .navbar__container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    transition: right 0.3s ease;
+    z-index: 150;
+  }
+
+  /* nav appear when click */
+  .navbar__container.show {
+    right: 0;
+  }
+
+  #start-timer,
+  #stop-timer {
+    padding: 1.4rem 3.5rem;
+  }
+  .blog__head {
+    margin-top: -1rem;
+  }
+
+  .coffePerson img {
+    max-width: 100%;
+  }
+
+  /* Footer style */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1.6rem;
+    margin-top: 2rem;
+  }
+
+  .social-media,
+  .footer__links {
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .footerLink {
+    padding-left: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .TimeMangement th,
+  .TimeMangement td {
+    padding: 5px;
+  }
+  .social-media {
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .footer-copyright {
+    letter-spacing: 0.1rem;
+    font-size: 0.8rem;
+    margin-top: 5rem;
+  }
+
+  .blog__head {
+    font-size: 2.4rem;
+  }
+
+  .introduction {
+    font-weight: 600;
+    font-size: 1.12rem;
+  }
+
+  #pomodoro-bubble {
+    display: none;
+  }
+
+  #pomodoro-timer {
+    margin-top: 4rem;
+  }
+}
+
+/* Under 768px */
+@media (max-width: 768px) {
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .main__container {
+    zoom: 105%;
+  }
+}
+
+/* Under 894px */
+@media (max-width: 894px) {
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .main__container {
+    zoom: 112%;
+  }
+}
